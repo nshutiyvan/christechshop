@@ -21,7 +21,6 @@
                     </div>
                     <div class="bill-to">
                         <p>Shipping details</p>
-                        @foreach(Cart::content() as $product)
                         <div class="form-one">
                             <form method="POST" action="{{ route('shipping.store') }}">
                                 @csrf
@@ -31,13 +30,31 @@
                                 <input type="text" name="address" placeholder="Address">
                                 <input type="text" name="phonenumber" placeholder="Phone Number">
                                 <input type="text" name="city" placeholder="City">
-                                <input type="hidden" name="product_name" value="{{ $product->name }}">
-                                <input type="hidden" name="product_price" value="{{ $product->price }}">
-                                <input type="hidden" name="product_quantity" value="{{ $product->qty }}">
                                 <input type="submit" class="btn btn-default" value="Done">
                             </form>
                         </div>
+                        @foreach(Cart::content() as $product)
+
+                        <input type="hidden" name="product_name" value="{{ $product->name }}">
+                        <input type="hidden" name="product_price" value="{{ $product->price }}">
+                        <input type="hidden" name="product_quantity" value="{{ $product->qty }}">
+                        {{--<div class="form-one">--}}
+                            {{--<form method="POST" action="{{ route('shipping.store') }}">--}}
+                                {{--@csrf--}}
+                                {{--<input type="text" name="email" placeholder="Email">--}}
+                                {{--<input type="text" name="firstname" placeholder="First Name">--}}
+                                {{--<input type="text" name="lastname" placeholder="Last Name">--}}
+                                {{--<input type="text" name="address" placeholder="Address">--}}
+                                {{--<input type="text" name="phonenumber" placeholder="Phone Number">--}}
+                                {{--<input type="text" name="city" placeholder="City">--}}
+                                {{--<input type="hidden" name="product_name" value="{{ $product->name }}">--}}
+                                {{--<input type="hidden" name="product_price" value="{{ $product->price }}">--}}
+                                {{--<input type="hidden" name="product_quantity" value="{{ $product->qty }}">--}}
+                                {{--<input type="submit" class="btn btn-default" value="Done">--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
                          @endforeach
+
                     </div>
                 </div>
             </div>
